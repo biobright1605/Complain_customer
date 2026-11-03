@@ -1,0 +1,66 @@
+/* =============================================================
+   tailwind.src.css — ไฟล์ต้นฉบับ CSS (build เป็น app.css)
+   รวม component class ที่ใช้ซ้ำ ๆ ไว้ที่นี่ เพื่อให้ HTML สั้นและแก้ที่เดียว
+   ============================================================= */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------- พื้นฐาน ---------- */
+@layer base {
+  html { -webkit-text-size-adjust: 100%; }
+  body { @apply bg-page text-ink font-sans antialiased; font-size: 14px; line-height: 1.55; }
+  a { @apply text-brand-dark hover:text-brand; }
+  input, select, textarea, button { font: inherit; color: inherit; }
+  h1 { font-size: clamp(20px, 2.4vw, 26px); @apply font-bold leading-tight; }
+}
+
+/* ---------- Components ---------- */
+@layer components {
+  /* การ์ด */
+  .card { @apply bg-white border border-line rounded-card; }
+  .card-head { @apply px-5 py-3.5 border-b border-line-soft text-[14px] font-semibold flex items-center justify-between gap-3; }
+  .card-body { @apply px-5 py-4; }
+
+  /* ปุ่ม */
+  .btn { @apply inline-flex items-center justify-center gap-1.5 rounded-ctl px-4 py-2.5 font-semibold text-[14px] cursor-pointer border transition-colors disabled:opacity-50 disabled:cursor-not-allowed min-h-[40px]; }
+  .btn-primary { @apply btn bg-brand border-brand text-white hover:bg-brand-dark hover:border-brand-dark; }
+  .btn-outline { @apply btn bg-white border-line-input text-ink-3 hover:border-brand hover:text-brand-dark; }
+  .btn-ghost { @apply btn bg-transparent border-transparent text-ink-muted hover:bg-hover; }
+  .btn-sm { @apply px-3 py-1.5 text-[13px] min-h-[32px]; }
+
+  /* ฟอร์ม */
+  .label { @apply text-[13px] font-medium text-ink-2; }
+  .input { @apply w-full px-3 py-2.5 border border-line-input rounded-ctl bg-white outline-none focus:border-brand focus:ring-[3px] focus:ring-brand-ring; }
+  .input-err { @apply border-brand; }
+  .field { @apply flex flex-col gap-1.5; }
+  .req::after { content: ' *'; @apply text-brand; }
+
+  /* pill / chip */
+  .pill { @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-[12px] font-semibold whitespace-nowrap; }
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-line-input bg-white px-3 py-1.5 text-[13px] cursor-pointer hover:border-brand; }
+  .chip-active { @apply bg-brand border-brand text-white hover:border-brand; }
+  .badge { @apply inline-grid place-items-center min-w-[20px] h-5 px-1.5 rounded-full bg-brand text-white text-[11px] font-bold; }
+
+  /* segmented control (กราฟ) */
+  .seg { @apply inline-flex border border-line-input rounded-ctl overflow-hidden; }
+  .seg > button { @apply px-3 py-1.5 text-[13px] font-medium bg-white text-ink-3 border-r border-line-input last:border-r-0; }
+  .seg > button[aria-pressed='true'] { @apply bg-brand text-white font-semibold; }
+
+  /* เมนู */
+  .nav-item { @apply flex items-center gap-3 px-3 py-2.5 rounded-ctl text-ink-3 font-medium hover:bg-hover; }
+  .nav-item[aria-current='page'] { @apply bg-brand-soft text-brand-dark font-semibold; }
+
+  /* ตาราง */
+  .tbl { @apply w-full border-collapse text-[13px]; }
+  .tbl th { @apply text-left font-semibold text-ink-muted text-[12px] px-3 py-2.5 border-b border-line-soft bg-sub whitespace-nowrap; }
+  .tbl td { @apply px-3 py-3 border-b border-line-softer align-top; }
+  .tbl tbody tr { @apply cursor-pointer hover:bg-hover; }
+
+  /* key-value grid ในหน้ารายละเอียด */
+  .kv { @apply grid gap-x-5 gap-y-3; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+  .kv dt { @apply text-[12px] text-ink-muted; }
+  .kv dd { @apply m-0 font-medium break-words; }
+
+  .meta { @apply text-[12px] text-ink-muted; }
+}

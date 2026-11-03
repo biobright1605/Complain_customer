@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ระบบข้อร้องเรียนสินค้า (น้ำตาล) — บริษัท น้ำตาลสุรินทร์ จำกัด</title>
+  <link rel="icon" href="/assets/logo-srs.jpg">
+
+  <!-- ฟอนต์ IBM Plex Sans Thai (ถ้า server ไม่มีอินเทอร์เน็ตจะใช้ system font แทน) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Thai:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS ที่ build จาก Tailwind (npm run build:css) -->
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <!-- แอปทั้งหมด render ลงใน #app โดย js/main.js -->
+  <div id="app" class="min-h-screen"></div>
+
+  <!-- Toast แจ้งเตือน (ล่างกลาง) -->
+  <div id="toast" role="status" aria-live="polite"
+       class="hidden fixed left-1/2 -translate-x-1/2 bottom-[84px] z-50 max-w-[92vw] px-4 py-3 rounded-[10px] text-white text-[13px] shadow-pop"></div>
+
+  <!-- Chart.js (serve จาก node_modules — ไม่ต้องใช้อินเทอร์เน็ต) -->
+  <script src="/vendor/chart.js/chart.umd.js"></script>
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

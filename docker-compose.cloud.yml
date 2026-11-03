@@ -1,0 +1,18 @@
+# =============================================================
+#  docker-compose.cloud.yml — รันเฉพาะแอป ต่อฐานข้อมูล Cloud MySQL
+#  (Azure Database for MySQL / AWS RDS / Google Cloud SQL)
+#  ตั้งใน .env:  DB_HOST=<host ของ cloud>  DB_SSL=true  DB_USER / DB_PASSWORD
+#  ใช้งาน:  docker compose -f docker-compose.cloud.yml up -d --build
+# =============================================================
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    ports:
+      - "${PORT:-3000}:3000"
+    volumes:
+      - uploads:/app/storage/uploads
+
+volumes:
+  uploads:   # ไฟล์แนบ (เก็บบน server ที่รันแอป — ควร backup ด้วย)

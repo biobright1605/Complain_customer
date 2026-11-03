@@ -1,0 +1,5 @@
+# ใช้ท้ายบรรทัดแบบ LF ทุกไฟล์ข้อความ (สำคัญสำหรับ .sh ที่รันบน Linux server)
+* text=auto eol=lf
+*.ps1 text eol=crlf
+*.jpg binary
+*.png binary
